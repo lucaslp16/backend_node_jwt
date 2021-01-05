@@ -9,5 +9,5 @@ mongoose.connect('mongodb://localhost/javascriptNode',{
 }).then(()=>{
     console.log('Connection sucessful')
 }).catch((err)=>{
-    console.log (err);
+    console.log (err)
 })
