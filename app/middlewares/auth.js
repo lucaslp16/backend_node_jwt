@@ -7,11 +7,11 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const WithAuth = (req,res,next) =>{
-    const token = new.headers['x-access-token'];
-    if(!token)
+    const token = req.headers['x-access-token'];
+    if(!token) 
         res.status(401).json({error: 'Unauthorized no token provided'});
     else{
-        jwt.verify(token, secret, (err, decode) =>{
+        jwt.verify(token, secret, (err, decoded) =>{
             if(err)
                 res.status(401).json({error: 'Umauthorized: token invalid'})
             else{
@@ -26,8 +26,7 @@ const WithAuth = (req,res,next) =>{
                 })
             }
         })
-
-
-        module.exports = WithAuth;
     }
 }
+
+module.exports = WithAuth;
