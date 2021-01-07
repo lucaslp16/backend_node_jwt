@@ -11,6 +11,8 @@ let noteSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     }
-})
+});
+
+noteSchema.index({'title': 'text' , 'body': 'text'});
 
 module.exports = mongoose.model('Note', noteSchema);
